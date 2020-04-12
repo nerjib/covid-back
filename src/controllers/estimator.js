@@ -17,16 +17,16 @@ router.post('/', async (req, res) => {
         avgDailyIncomeInUSD: 5,
         avgDailyIncomePopulation: 0.71
         },
-        periodType: "days",
-        timeToElapse: 5,
-        reportedCases: 674,
-        population: 66622705,
-        totalHospitalBeds: 1380614
+        periodType: req.body.periodType,
+        timeToElapse: req.body.timeToElapse,
+        reportedCases: req.body.reportedCases,
+        population: req.body.population,
+        totalHospitalBeds: req.body.totalHospitalBeds
         }
 
      const output1 = (Estimator.covid19ImpactEstimator(data))
   
-    return res.status(201).json(output1);
+    return res.status(200).json(output1);
 
 });
 
@@ -40,16 +40,16 @@ router.post('/json', async (req, res) => {
         avgDailyIncomeInUSD: 5,
         avgDailyIncomePopulation: 0.71
         },
-        periodType: "days",
-        timeToElapse: 5,
-        reportedCases: 674,
-        population: 66622705,
-        totalHospitalBeds: 1380614
+        periodType: req.body.periodType,
+        timeToElapse: req.body.timeToElapse,
+        reportedCases: req.body.reportedCases,
+        population: req.body.population,
+        totalHospitalBeds: req.body.totalHospitalBeds
         }
 
      const output1 = (Estimator.covid19ImpactEstimator(data))
   
-    return res.status(201).json(output1);
+    return res.status(200).json(output1);
 
 });
 
@@ -66,18 +66,18 @@ const builder = new xml.Builder({
         avgDailyIncomeInUSD: 5,
         avgDailyIncomePopulation: 0.71
         },
-        periodType: "days",
-        timeToElapse: 5,
-        reportedCases: 674,
-        population: 66622705,
-        totalHospitalBeds: 1380614
-        }
+        periodType: req.body.periodType,
+        timeToElapse: req.body.timeToElapse,
+        reportedCases: req.body.reportedCases,
+        population: req.body.population,
+        totalHospitalBeds: req.body.totalHospitalBeds
+    }
 
      const output1 = (Estimator.covid19ImpactEstimator(data))
   res.type('application/xml');
 res.header('Content-Type', 'text/xml');
 //console.log(res.time)
- return res.status(201).send((output1));
+ return res.status(200).send((output1));
 });
 
 router.get('/logs', async (req, res) => {
@@ -91,7 +91,7 @@ router.get('/logs', async (req, res) => {
         console.log(((logs.log).split(',')).length)
         const legth = ((logs.log).split(',')).length
        // console.log(legth)
-       res.json('fff')
+       res.json(legth)
         for (var i; i<legth; i++ ){
             console.log(1)
                 console.log('((logs.log).split(','))[i]')
